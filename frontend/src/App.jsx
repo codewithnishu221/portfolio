@@ -1,30 +1,34 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { PaperPlaneProvider } from './context/PaperPlaneContext'
 import Navigation from './components/Navigation'
-import Home from './pages/Home'
-import About from './pages/About'
-import Skills from './pages/Skills'
-import Experience from './pages/Experience'
-import Projects from './pages/Projects'
-import Contact from './pages/Contact'
-import AIAssistant from './pages/AIAssistant'
+import BackgroundAnimation from './components/BackgroundAnimation'
+import PaperPlane from './components/PaperPlane'
+import ChatWidget from './components/ChatWidget'
+import MainPage from './sections/MainPage'
 import './App.css'
 
 function App() {
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('portfolio-theme') || 'dark'
+  })
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('portfolio-theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark')
+  }
+
   return (
-    <BrowserRouter>
-      <Navigation />
-      <main className="main-content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/skills" element={<Skills />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/ai-assistant" element={<AIAssistant />} />
-        </Routes>
-      </main>
-    </BrowserRouter>
+    <PaperPlaneProvider>
+      <BackgroundAnimation />
+      <Navigation theme={theme} toggleTheme={toggleTheme} />
+      <PaperPlane />
+      <ChatWidget />
+      <MainPage />
+    </PaperPlaneProvider>
   )
 }
 

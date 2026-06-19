@@ -1,31 +1,54 @@
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { usePaperPlane } from '../context/PaperPlaneContext'
 import './Navigation.css'
 
-function Navigation() {
+const navLinks = [
+  { href: '#home', label: 'Home' },
+  { href: '#skills', label: 'Skills' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#experience', label: 'Experience' },
+  { href: '#contact', label: 'Contact' },
+]
+
+function Navigation({ theme, toggleTheme }) {
+  const { flyTo } = usePaperPlane()
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const location = useLocation()
+  const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50)
+      const sections = navLinks.map(l => l.href.slice(1))
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i])
+        if (el && el.getBoundingClientRect().top <= 150) {
+          setActiveSection(sections[i])
+          break
+        }
+      }
+    }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
+  const handleNavClick = (e, href) => {
+    e.preventDefault()
     setIsOpen(false)
-  }, [location])
-
-  const isActive = (path) => location.pathname === path
+    const id = href.slice(1)
+    if (id === activeSection) return
+    const rect = e.currentTarget.getBoundingClientRect()
+    flyTo(id, rect.left + rect.width / 2, rect.top + rect.height / 2)
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
       <div className="nav-container">
-        <Link to="/" className="nav-logo">
+        <a href="#home" className="nav-logo" onClick={(e) => handleNavClick(e, '#home')}>
           <span className="logo-icon">&lt;/&gt;</span>
           <span className="logo-text">Nishu</span>
-        </Link>
+        </a>
         <button
           className={`hamburger ${isOpen ? 'active' : ''}`}
           onClick={() => setIsOpen(!isOpen)}
@@ -36,25 +59,27 @@ function Navigation() {
           <span></span>
         </button>
         <ul className={`nav-menu ${isOpen ? 'active' : ''}`}>
-          {[
-            { path: '/', label: 'Home', icon: 'fa-house' },
-            { path: '/about', label: 'About', icon: 'fa-user' },
-            { path: '/skills', label: 'Skills', icon: 'fa-code' },
-            { path: '/experience', label: 'Experience', icon: 'fa-briefcase' },
-            { path: '/projects', label: 'Projects', icon: 'fa-folder-open' },
-            { path: '/contact', label: 'Contact', icon: 'fa-envelope' },
-            { path: '/ai-assistant', label: 'AI Assistant', icon: 'fa-robot' },
-          ].map(({ path, label, icon }) => (
-            <li key={path} className="nav-item">
-              <Link
-                to={path}
-                className={`nav-link ${isActive(path) ? 'active' : ''}`}
+          {navLinks.map(({ href, label }) => (
+            <li key={href} className="nav-item">
+              <a
+                href={href}
+                className={`nav-link ${activeSection === href.slice(1) ? 'active' : ''}`}
+                onClick={(e) => handleNavClick(e, href)}
               >
-                <i className={`fas ${icon}`}></i>
-                <span>{label}</span>
-              </Link>
+                {label}
+              </a>
             </li>
           ))}
+          <li className="nav-item theme-toggle-item">
+            <button
+              onClick={toggleTheme}
+              className="theme-toggle-btn"
+              aria-label="Toggle theme"
+              title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              <i className={`fas ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`}></i>
+            </button>
+          </li>
         </ul>
       </div>
     </nav>

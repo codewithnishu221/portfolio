@@ -8,7 +8,7 @@ function Experience() {
       points: [
         'Designed and integrated a REST API-based AL3 (ACORD) file ingestion pipeline — parsing carrier files into JSON and routing structured data to AWS S3 — using Lambda, SQS, SES, EventBridge, and CloudWatch for event-driven automation and monitoring.',
         'Diagnosed and resolved critical Lambda timeout failures on large daily payloads; re-architected solution with chunked JSON processing, UUID-named S3 folder storage, and event-driven scheduling — reducing large-file failures from near-100% to zero.',
-        'Applied IAM Role-based access control, secure credential management, and OWASP security standards across AWS-integrated workflows; maintained production deployments across Sandbox, UAT, and Production environments.',
+        'Applied IAM Role-based access control and secure credential management across AWS-integrated workflows; maintained production deployments across Sandbox, UAT, and Production environments.',
         'Collaborated directly with US-based clients to gather requirements, translated business needs into technical solutions, and guided team members on implementation — delivering production-ready features in Git-based Agile sprints with code reviews.',
       ],
     },
