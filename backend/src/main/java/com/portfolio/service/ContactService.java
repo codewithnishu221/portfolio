@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 public class ContactService {
 
     private final ContactMessageRepository contactRepository;
+    private final EmailService emailService;
 
-    public ContactService(ContactMessageRepository contactRepository) {
+    public ContactService(ContactMessageRepository contactRepository, EmailService emailService) {
         this.contactRepository = contactRepository;
+        this.emailService = emailService;
     }
 
     public ContactMessage saveContactMessage(ContactMessageDTO dto) {
@@ -19,6 +21,10 @@ public class ContactService {
         message.setName(dto.getName());
         message.setEmail(dto.getEmail());
         message.setMessage(dto.getMessage());
-        return contactRepository.save(message);
+        ContactMessage saved = contactRepository.save(message);
+
+        emailService.sendContactNotification(dto);
+
+        return saved;
     }
 }
