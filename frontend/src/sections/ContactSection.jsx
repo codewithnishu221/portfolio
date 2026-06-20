@@ -5,6 +5,7 @@ import './ContactSection.css'
 function ContactSection() {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -12,6 +13,7 @@ function ContactSection() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setErrorMsg('')
     try {
       await submitContact(formData)
       setSubmitted(true)
@@ -19,6 +21,7 @@ function ContactSection() {
       setTimeout(() => setSubmitted(false), 5000)
     } catch (error) {
       console.error('Error submitting form:', error)
+      setErrorMsg('Failed to send. Please try again later.')
     }
   }
 
@@ -37,6 +40,14 @@ function ContactSection() {
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
                 </svg>
                 Message sent successfully!
+              </div>
+            )}
+            {errorMsg && (
+              <div className="contact-error">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>
+                </svg>
+                {errorMsg}
               </div>
             )}
             <form onSubmit={handleSubmit} className="contact-form-new">

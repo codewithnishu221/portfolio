@@ -9,6 +9,7 @@ function Contact() {
     message: '',
   })
   const [submitted, setSubmitted] = useState(false)
+  const [errorMsg, setErrorMsg] = useState('')
 
   const handleChange = (e) => {
     setFormData({
@@ -19,6 +20,7 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setErrorMsg('')
     try {
       await submitContact(formData)
       setSubmitted(true)
@@ -26,6 +28,7 @@ function Contact() {
       setTimeout(() => setSubmitted(false), 5000)
     } catch (error) {
       console.error('Error submitting form:', error)
+      setErrorMsg('Failed to send. Please try again later.')
     }
   }
 
@@ -37,6 +40,11 @@ function Contact() {
           {submitted && (
             <p className="success-message">
               Message sent successfully!
+            </p>
+          )}
+          {errorMsg && (
+            <p className="error-message">
+              {errorMsg}
             </p>
           )}
           <form onSubmit={handleSubmit} className="contact-form">
