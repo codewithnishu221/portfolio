@@ -19,7 +19,8 @@ function BackgroundAnimation() {
     resize()
     window.addEventListener('resize', resize)
 
-    const numParticles = 70
+    const isSmallScreen = window.innerWidth < 768
+    const numParticles = isSmallScreen ? 32 : 70
     for (let i = 0; i < numParticles; i++) {
       particles.push({
         x: Math.random() * canvas.width,
@@ -35,7 +36,14 @@ function BackgroundAnimation() {
       mouseRef.current.x = e.clientX
       mouseRef.current.y = e.clientY
     }
-    window.addEventListener('mousemove', handleMouse)
+    const handleTouch = (e) => {
+      if (e.touches && e.touches[0]) {
+        mouseRef.current.x = e.touches[0].clientX
+        mouseRef.current.y = e.touches[0].clientY
+      }
+    }
+    window.addEventListener('mousemove', handleMouse, { passive: true })
+    window.addEventListener('touchmove', handleTouch, { passive: true })
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -88,6 +96,7 @@ function BackgroundAnimation() {
       cancelAnimationFrame(animId)
       window.removeEventListener('resize', resize)
       window.removeEventListener('mousemove', handleMouse)
+      window.removeEventListener('touchmove', handleTouch)
     }
   }, [])
 

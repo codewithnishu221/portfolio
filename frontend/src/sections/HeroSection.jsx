@@ -20,8 +20,9 @@ function HeroSection() {
             Open to new opportunities
           </div>
           <p className="hero-title">
-            Backend-focused Software Engineer with 2+ years of experience delivering
+            Senior Software Engineer with 2+ years of experience delivering
             scalable enterprise applications using Java, Spring Boot, and AWS.
+            Promoted to Senior in July 2026 at Webner Solutions.
           </p>
           <div className="hero-location">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

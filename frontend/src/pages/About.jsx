@@ -1,6 +1,6 @@
 function About() {
   const highlights = [
-    { icon: 'fa-briefcase', title: '2+ Years Experience', desc: 'Building enterprise integrations with REST APIs, AWS, and event-driven architectures' },
+    { icon: 'fa-briefcase', title: 'Senior Software Engineer', desc: 'Promoted Jul 2026 at Webner Solutions — building enterprise integrations with REST APIs, AWS, and event-driven architectures' },
     { icon: 'fa-code-fork', title: 'Open Source', desc: 'Creator of FSC-Bridge — a production-grade microservices migration engine' },
     { icon: 'fa-graduation-cap', title: 'MCA (GPA: 8.5)', desc: 'Master of Computer Applications from Chandigarh Group of Colleges' },
   ]
@@ -10,8 +10,8 @@ function About() {
       <h1>About Me</h1>
       <section className="about-content">
         <p>
-          Software Engineer with ~2 years of professional experience building enterprise-grade 
-          integrations using REST APIs, AWS services (S3, Lambda, SQS, SES, EventBridge), and 
+          Senior Software Engineer (promoted July 2026; Software Engineer July 2024 – June 2026) with 2+ years of professional experience building enterprise-grade
+          integrations using REST APIs, AWS services (S3, Lambda, SQS, SES, EventBridge), and
           event-driven architectures. Currently engineering{' '}
           <strong style={{ color: '#818cf8' }}>FSC-Bridge</strong>, a production-grade 
           open-source microservices system in Java 17, Spring Boot 3.x, Apache Kafka, and PostgreSQL.

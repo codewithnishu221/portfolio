@@ -177,6 +177,16 @@
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
+@media (max-width: 1024px) {
+  .nav-container {
+    padding: 0 20px;
+  }
+  .nav-link {
+    padding: 10px 12px;
+    font-size: 0.88em;
+  }
+}
+
 @media (max-width: 768px) {
   .hamburger {
     display: flex;
@@ -187,19 +197,28 @@
     top: 0;
     right: -100%;
     width: 280px;
+    max-width: 85vw;
     height: 100vh;
+    height: 100dvh;
     flex-direction: column;
+    align-items: stretch;
     background: var(--bg-nav-scrolled);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 80px 24px 24px;
     gap: 4px;
     transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border-left: 1px solid var(--border-color);
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
   }
 
   .nav-menu.active {
     right: 0;
+  }
+
+  .nav-item {
+    width: 100%;
   }
 
   .nav-link {
@@ -225,5 +244,30 @@
   .theme-toggle-btn {
     width: 44px;
     height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 12px 0;
+  }
+  .nav-container {
+    padding: 0 16px;
+  }
+  .nav-logo {
+    font-size: 1.3em;
+  }
+  .nav-menu {
+    width: min(280px, 85vw);
+    padding: 72px 20px 20px;
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-logo {
+    font-size: 1.2em;
+  }
+  .logo-icon {
+    font-size: 1.1em;
   }
 }

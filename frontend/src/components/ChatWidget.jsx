@@ -5,7 +5,7 @@ import './ChatWidget.css'
 const knowledgeBase = [
   {
     keywords: ['who is nishu', 'about nishu', 'tell me about nishu', 'about yourself', 'who are you'],
-    answer: "Nishu is a Software Engineer with 2+ years of experience specializing in backend development with Java, Spring Boot, and AWS. She currently works at Webner Solutions as a Software Engineer II, building enterprise-grade cloud-native applications and data pipelines."
+    answer: "Nishu is a Senior Software Engineer with 2+ years of experience specializing in backend development with Java, Spring Boot, and AWS. She works at Webner Solutions — promoted from Software Engineer (July 2024 – June 2026) to Senior Software Engineer (July 2026 – Present) — building enterprise-grade cloud-native applications and data pipelines."
   },
   {
     keywords: ['skills', 'technologies', 'tech stack', 'programming languages', 'expertise'],
@@ -13,7 +13,7 @@ const knowledgeBase = [
   },
   {
     keywords: ['experience', 'work', 'job', 'career', 'employed', 'working at'],
-    answer: "Nishu works at Webner Solutions as a Software Engineer II. She has experience building production-grade REST APIs, enterprise data pipelines, and cloud-native microservices. She has worked on AI-powered migration platforms, AL3 insurance carrier data pipelines, and project management platforms."
+    answer: "Nishu works at Webner Solutions as a Senior Software Engineer (promoted July 2026; previously Software Engineer July 2024 – June 2026). She has experience building production-grade REST APIs, enterprise data pipelines, and cloud-native microservices. She has worked on AI-powered migration platforms, AL3 insurance carrier data pipelines, and project management platforms."
   },
   {
     keywords: ['projects', 'what projects', 'portfolio', 'built', 'developed'],
@@ -44,8 +44,8 @@ const knowledgeBase = [
     answer: "SprintLens is a cloud-native microservices-based project management platform. Features include JWT auth with RBAC, Spring Cloud Gateway, PostgreSQL per-tenant, Apache Kafka, WebSocket with Redis Pub/Sub, Elasticsearch search, OpenAI integration, Flyway migrations, and Prometheus/Grafana monitoring."
   },
   {
-    keywords: ['spring boot', 'java', 'backend', 'developer', 'software engineer'],
-    answer: "Nishu is a highly skilled Java & Spring Boot developer with deep expertise in building enterprise-grade backends, microservices, REST APIs, and cloud-native applications. She works extensively with Spring ecosystem including Spring Security, Spring Cloud, Spring Batch, and Spring AI."
+    keywords: ['spring boot', 'java', 'backend', 'developer', 'software engineer', 'senior', 'promotion', 'promoted'],
+    answer: "Nishu is a Senior Software Engineer (promoted July 2026 at Webner Solutions) and highly skilled Java & Spring Boot developer with deep expertise in building enterprise-grade backends, microservices, REST APIs, and cloud-native applications. She works extensively with Spring ecosystem including Spring Security, Spring Cloud, Spring Batch, and Spring AI."
   },
   {
     keywords: ['aws', 'cloud', 'devops', 'docker', 'kubernetes'],

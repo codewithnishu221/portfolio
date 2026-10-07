@@ -3,10 +3,29 @@ import './ExperienceSection.css'
 function ExperienceSection() {
   const experiences = [
     {
+      title: 'Senior Software Engineer',
+      company: 'Webner Solutions Pvt Ltd.',
+      location: 'Mohali, Punjab, IN',
+      period: 'July 2026 – Present',
+      isCurrent: true,
+      promoted: true,
+      responsibilities: [
+        'Leading design and delivery of the enterprise AL3 (ACORD) ingestion platform — owning architecture decisions across AWS Lambda, SQS, EventBridge, S3, SES, and CloudWatch',
+        'Mentoring engineers and leading code/design reviews; driving Agile delivery and unblocking the team on complex backend and AWS challenges',
+        'Acting as technical owner with US-based clients — translating business needs into scalable solutions and multi-environment (Sandbox, UAT, Production) release strategy',
+        'Driving reliability and security at scale: IAM RBAC, secure credential governance, observability, and sustaining zero-failure large-file processing',
+      ],
+      impacts: [
+        'Promoted to Senior for consistent high-quality delivery',
+        'Zero large-file failures sustained at scale',
+        'Technical ownership of client delivery & releases',
+      ],
+    },
+    {
       title: 'Software Engineer',
       company: 'Webner Solutions Pvt Ltd.',
       location: 'Mohali, Punjab, IN',
-      period: 'July 2024 – Present',
+      period: 'July 2024 – June 2026',
       responsibilities: [
         'Designed AL3 (ACORD) REST API ingestion pipeline — parsing carrier files to JSON, routing to AWS S3 via Lambda, SQS, SES, EventBridge, CloudWatch',
         'Resolved critical Lambda timeout failures — re-architected with chunked JSON processing & event-driven scheduling, reducing failures from ~100% to zero',
@@ -30,7 +49,7 @@ function ExperienceSection() {
         </div>
         <div className="experience-content">
           {experiences.map((exp, i) => (
-            <div key={i} className="exp-card">
+            <div key={i} className={`exp-card ${exp.isCurrent ? 'exp-card-current' : ''}`}>
               <div className="exp-card-top">
                 <div className="exp-card-left">
                   <div className="exp-title-row">
@@ -40,7 +59,11 @@ function ExperienceSection() {
                       </svg>
                     </div>
                     <div>
-                      <h3>{exp.title}</h3>
+                      <h3>
+                        {exp.title}
+                        {exp.isCurrent && <span className="exp-current-badge">Current</span>}
+                        {exp.promoted && <span className="exp-promoted-badge">Promoted Jul 2026</span>}
+                      </h3>
                       <p className="exp-company">{exp.company}</p>
                     </div>
                   </div>

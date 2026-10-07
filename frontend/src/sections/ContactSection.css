@@ -142,6 +142,12 @@
   color: #818cf8;
 }
 
+@media (max-width: 1024px) {
+  .contact-content {
+    gap: 32px;
+  }
+}
+
 @media (max-width: 768px) {
   .contact-section {
     padding: 60px 16px;
@@ -149,8 +155,44 @@
   .contact-content {
     grid-template-columns: 1fr;
     gap: 30px;
+    max-width: 560px;
   }
   .form-row {
     grid-template-columns: 1fr;
+  }
+  .submit-contact-btn {
+    align-self: stretch;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 48px 16px;
+  }
+  .contact-info-card {
+    padding: 14px;
+  }
+  .contact-info-card p,
+  .contact-info-card a {
+    font-size: 0.88em;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+  .form-group-new input,
+  .form-group-new textarea {
+    padding: 12px;
+  }
+  .submit-contact-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .contact-form-new {
+    gap: 14px;
+  }
+  .form-row {
+    gap: 14px;
   }
 }
